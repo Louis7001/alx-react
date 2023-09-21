@@ -1,25 +1,19 @@
-import React from "react";
-import App from "./App";
-import { shallow } from "enzyme";
+import App from './App';
+import { shallow } from 'enzyme';
+import React from 'react';
 
-describe("App Componeent Tests", () => {
-  it("Renders without crashing", () => {
-    const app = shallow(<App />);
-    expect(app).toBeDefined();
-  });
-  it("renders a div with the class App-header", () => {
-    const app = shallow(<App />);
+const wrapper = shallow(<App />);
 
-    expect(app.find(".App-header")).toBeDefined();
-  });
-  it("renders a div with the class App-body", () => {
-    const app = shallow(<App />);
+test('checkin crashing issue', function () {
+  shallow(<App />);
+});
 
-    expect(app.find(".App-body")).toBeDefined();
-  });
-  it("renders a div with the class App-footer", () => {
-    const app = shallow(<App />);
-
-    expect(app.find(".App-footer")).toBeDefined();
-  });
+test('checkin header', function () {
+  expect(wrapper.find('header.App-header').exists()).toEqual(true);
+});
+test('checkin body', function () {
+  expect(wrapper.find('body.App-body').exists()).toEqual(true);
+});
+test('checkin footer', function () {
+  expect(wrapper.find('footer.App-footer').exists()).toEqual(true);
 });

@@ -1,26 +1,61 @@
-import React from "react";
-import "./Notifications.css";
-import closeIcon from "../assets/close-icon.png";
-import { getLatestNotification } from "../utils/utils";
+import React from 'react'
+import './Notifications.css';
+import { getLatestNotification } from '../utils/utils';
 
-function Notifications() {
+const Notifications = function () {
   return (
-    <div className="Notifications">
-      <button
-        style={{ color: "#3a3a3a", fontWeight: "bold", background: "none", border: "none", fontSize: "15px", position: "absolute", right: "2px", top: "2px", cursor: "pointer" }}
-        aria-label="Close"
-        onClick={console.log("Close button has been clicked")}
+    <div
+      className='Notifications'
+      style={{
+        display: 'flex-box',
+        position: 'absolute',
+        top: '10px',
+        right: '8px',
+        width: '95%',
+        height: '7%',
+      }}
+    >
+      <p
+        style={{
+          display: 'inline-block',
+          position: 'absolute',
+          top: '-70px',
+          left: '-3%',
+        }}
       >
-        <img src={closeIcon} alt="closeIcon" width="10px" />
+        Here is the list of notifications
+      </p>
+      <button
+        type='button'
+        aria-label='Close'
+        onClick={() => console.log('Close button has been clicked')}
+        style={{
+          display: 'inline-block',
+          position: 'absolute',
+          top: '10px',
+          right: '10px',
+          border: '0',
+        }}
+      >
       </button>
-      <p>Here is the list of notifications</p>
-      <ul>
-        <li data="default">New course available</li>
-        <li data="urgent">New resume available</li>
-        <li data="urgent" dangerouslySetInnerHTML={{ __html: getLatestNotification() }}></li>
+      <ul
+        style={{
+          display: 'inline-block',
+          position: 'absolute',
+          top: '30%',
+          left: '10px',
+        }}
+      >
+        <li data-priority='default'>New course available</li>
+        <li data-priority='urgent'>New resume available</li>
+        <li data-priority='urgent'>
+          <div
+            dangerouslySetInnerHTML={{ __html: `${getLatestNotification()}` }}
+          ></div>
+        </li>
       </ul>
     </div>
   );
-}
+};
 
 export default Notifications;

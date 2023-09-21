@@ -1,25 +1,22 @@
 .Notifications {
-  padding: 1em;
-  border: 2px dashed red;
-  position: absolute;
-  top: 1.8em;
-  right: 0;
+    float:right;
+    padding: 2rem;
+    border: 2px dashed #e2374c;
 }
 
-.notification-header {
-  display: flex;
-  justify-content: space-between;
+.menuItems {
+    display: flex;
+    justify-content: flex-end;
 }
 
-.menuItem {
-  text-align: right;
+li[data-notification-type="default"] {
+    color: blue;
 }
 
-[data-notification-type="default"] {
-  color: blue;
+li[data-notification-type="urgent"] {
+    color: #e2374c;
 }
 
-[data-urgent],
-[data-notification-type="urgent"] {
-  color: red;
+.Notifications button {
+    float: right;
 }

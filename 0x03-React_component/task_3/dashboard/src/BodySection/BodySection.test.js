@@ -1,19 +1,17 @@
-import React from "react";
-import BodySection from "./BodySection";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow } from 'enzyme';
+import BodySection from './BodySection';
 
-describe("BodySection tests", () => {
-  it("should render correctly", () => {
-    const wrapper = shallow(
-      <BodySection title="test title">
-        <p>test children node</p>
-      </BodySection>
-    );
+describe('BodySection tests', () => {
+    it('renders properly', () => {
+        shallow(<BodySection />);
+    });
+    it ('Correct rendering', () => {
+       const children = <p>children of section</p>
+       const wrapper = shallow(<BodySection title='example' children={children} />);
 
-    expect(wrapper.exists()).toBe(true);
-    expect(wrapper.exists("h2")).toBe(true);
-    expect(wrapper.find("h2").html()).toEqual("<h2>test title</h2>");
-    expect(wrapper.exists("p")).toBe(true);
-    expect(wrapper.find("p").text()).toEqual("test children node");
-  });
-});
+       const title = wrapper.find('h2');
+       expect(title.text()).toEqual('example');
+       expect(wrapper.prop('children')[1]).toEqual(children);
+    })
+})
